@@ -69,8 +69,8 @@ class QMN_Gradebook
   	  */
     public function add_hooks()
     {
-        //Insert code
         add_action('admin_menu', array( $this, 'setup_admin_menu'));
+        add_action('admin_head', array( $this, 'admin_head'), 900);
     }
 
     /**
@@ -89,6 +89,19 @@ class QMN_Gradebook
         add_submenu_page(__FILE__, 'User Scores', 'User Scores', 'moderate_comments', 'qmn_gb_user', array('QMN_GB_User_Page','generate_page'));
       }
     }
+
+  /**
+	 * Removes Unnecessary Admin Page
+	 *
+	 * Removes the update, quiz settings, and quiz results pages from the Quiz Menu
+	 *
+	 * @since 4.1.0
+	 * @return void
+	 */
+	public function admin_head()
+	{
+		remove_submenu_page( 'qmn-gradebook/qmn-gradebook.php', 'qmn_gb_user' );
+	}
 }
 $qmn_gradebook = new QMN_Gradebook();
 ?>
