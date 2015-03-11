@@ -85,11 +85,11 @@ class QMN_GB_Admin
                 echo "<td>";
                   echo $user->name;
                   echo "<div class=\"row-actions\">
-                        <a class='linkOptions' href='admin.php?page=qmn_gb_user&&user_id=".esc_js($user->user)."'>View User's Scores</a>                        
+                        <a class='linkOptions' href='admin.php?page=qmn_gb_user&&user_id=".esc_js($user->user)."'>View User's Scores</a>
                   </div>";
                 echo "</td>";
-                echo "<td>".$user->points."</td>";
-                echo "<td>".$user->score."</td>";
+                echo "<td>".round($user->points, 2)."</td>";
+                echo "<td>".round($user->score, 2)."%</td>";
               echo "</tr>";
             }
             ?>
