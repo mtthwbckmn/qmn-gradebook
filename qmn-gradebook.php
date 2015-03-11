@@ -55,7 +55,8 @@ class QMN_Gradebook
   	  */
     public function load_dependencies()
     {
-      //Insert code
+      include("php/gradebook-main-page.php");
+      include("php/gradebook-user-page.php");
     }
 
     /**
@@ -85,6 +86,7 @@ class QMN_Gradebook
   		if (function_exists('add_menu_page'))
   		{
         add_menu_page('Gradebook', 'Gradebook', 'moderate_comments', __FILE__, array('QMN_GB_Admin','generate_page'), 'dashicons-flag');
+        add_submenu_page(__FILE__, 'User Scores', 'User Scores', 'moderate_comments', 'qmn_gb_user', array('QMN_GB_User_Page','generate_page'));
       }
     }
 }
