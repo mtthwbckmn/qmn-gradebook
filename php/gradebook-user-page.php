@@ -63,7 +63,7 @@ class QMN_GB_User_Page
       global $wpdb;
       $user = intval($_GET["user_id"]);
       $table = $wpdb->prefix."mlw_results";
-      $grades = $wpdb->get_results("SELECT quiz_name, quiz_system, point_score, correct_score, correct, total, time_taken FROM $table WHERE user=$user AND deleted=0 ORDER BY quiz_name ASC");
+      $grades = $wpdb->get_results("SELECT result_id, quiz_name, quiz_system, point_score, correct_score, correct, total, time_taken FROM $table WHERE user=$user AND deleted=0 ORDER BY quiz_name ASC");
       ?>
       <div class="wrap">
         <h2>Gradebook</h2>
@@ -83,7 +83,11 @@ class QMN_GB_User_Page
               if($alternate) $alternate = "";
               else $alternate = " class=\"alternate\"";
               echo "<tr{$alternate}>";
-                echo "<td>".$quiz->quiz_name."</td>";
+                echo "<td>";
+                  echo $quiz->quiz_name;
+                  echo "<div class=\"row-actions\">
+                    <a class='linkOptions' href='admin.php?page=mlw_quiz_result_details&&result_id=".$quiz->result_id."'>View</a>
+                  </div>";
                 if ($quiz->quiz_system == 0)
                 {
                   echo "<td>".$quiz->correct."/".$quiz->total." or ".$quiz->correct_score."%</td>";
