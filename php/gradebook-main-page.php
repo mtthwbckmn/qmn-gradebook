@@ -58,7 +58,6 @@ class QMN_GB_Admin
         echo __("You do not have proper authority to access this page",'wordpress-developer-toolkit');
         return '';
       }
-      wp_enqueue_style( 'gb_admin_style', plugins_url( '../css/admin.css' , __FILE__ ) );
       wp_enqueue_script( 'gb_admin_script', plugins_url( '../js/admin.js' , __FILE__ ) );
       global $wpdb;
       $table = $wpdb->prefix."mlw_results";
