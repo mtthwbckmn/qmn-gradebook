@@ -58,7 +58,6 @@ class QMN_GB_User_Page
         echo __("There has been an error with your request.",'wordpress-developer-toolkit');
         return '';
       }
-      wp_enqueue_style( 'gb_admin_style', plugins_url( '../css/admin.css' , __FILE__ ) );
       wp_enqueue_script( 'gb_admin_script', plugins_url( '../js/admin.js' , __FILE__ ) );
       global $wpdb;
       $user = intval($_GET["user_id"]);
